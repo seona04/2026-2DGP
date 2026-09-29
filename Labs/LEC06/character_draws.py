@@ -2,4 +2,5 @@
 while True:
     move circle ()
     move rectangle ()
+    move triangle ()
     pass
