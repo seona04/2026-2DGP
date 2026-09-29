@@ -82,6 +82,9 @@ def draw_triangle_left():
 
 def draw_triangle():
     print ("TRIANGLE")
+    draw_triangle_bottom()
+    draw_triangle_right()
+    draw_triangle_left()
     pass
 
 while True:
