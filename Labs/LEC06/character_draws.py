@@ -63,6 +63,10 @@ def draw_triangle_bottom():
     print ('TRIANGLE_BOTTOM')
     pass
 
+def draw_triangle_right():
+    print ('TRIANGLE_RIGHT')
+    pass
+
 def draw_triangle():
     print ("TRIANGLE")
     pass
