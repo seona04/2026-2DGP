@@ -17,15 +17,19 @@ def move_circle():
     pass
 
 def draw_top():
+    print ('TOP')
     pass
 
 def draw_right():
+    print ('RIGHT')
     pass
 
 def draw_bottom():
+    print ('BOTTOM')
     pass
 
 def draw_left():
+    print ('LEFT')
     pass
 
 
