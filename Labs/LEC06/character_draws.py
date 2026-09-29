@@ -35,6 +35,9 @@ def draw_bottom():
 
 def draw_left():
     print ('LEFT')
+    x = 200
+    for y in range(100, 501, 5):
+        draw_character(x, y)
     pass
 
 
