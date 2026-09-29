@@ -57,8 +57,6 @@ def draw_rectangle():
     draw_left()
     pass
 
-# 삼각형 꼭짓점: 왼쪽아래(200,100), 오른쪽아래(600,100), 꼭대기(400,500)
-
 def draw_triangle_bottom():
     print ('TRIANGLE_BOTTOM')
     y = 100
