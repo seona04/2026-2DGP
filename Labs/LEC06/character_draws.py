@@ -71,6 +71,10 @@ def draw_triangle():
     print ("TRIANGLE")
     pass
 
+def draw_triangle_left():
+    print ('TRIANGLE_LEFT')
+    pass
+
 while True:
     draw_circle ()
     draw_rectangle ()
