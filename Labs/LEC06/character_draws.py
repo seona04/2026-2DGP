@@ -18,6 +18,10 @@ def move_circle():
 
 def move_rectangle():
     print ("RECTANGLE")
+    draw_top()
+    draw_right()
+    draw_bottom()
+    draw_left()
     pass
 
 def move_triangle():
