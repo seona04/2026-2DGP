@@ -12,6 +12,15 @@ def draw_character(x, y):
     update_canvas()
     delay(0.1)
 
+def draw_circle():
+    print ("CIRCLE")
+    for deg in range(0, 360, 5):
+        rad = math.radians(deg)
+        x = 400 + 200 * math.cos(rad)
+        y = 300 + 200 * math.sin(rad)
+       draw_character(x, y)
+    pass
+
 def draw_top():
     print ('TOP')
     y = 500
@@ -40,16 +49,6 @@ def draw_left():
         draw_character(x, y)
     pass
 
-
-def draw_circle():
-    print ("CIRCLE")
-    for deg in range(0, 360, 5):
-        rad = math.radians(deg)
-        x = 400 + 200 * math.cos(rad)
-        y = 300 + 200 * math.sin(rad)
-       draw_character(x, y)
-    pass
-
 def draw_rectangle():
     print ("RECTANGLE")
     draw_top()
@@ -59,6 +58,11 @@ def draw_rectangle():
     pass
 
 # 삼각형 꼭짓점: 왼쪽아래(200,100), 오른쪽아래(600,100), 꼭대기(400,500)
+
+def draw_triangle_bottom():
+    print ('TRIANGLE_BOTTOM')
+    pass
+
 def draw_triangle():
     print ("TRIANGLE")
     pass
