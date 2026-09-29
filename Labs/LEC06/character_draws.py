@@ -19,11 +19,15 @@ def draw_circle():
 def draw_top():
     print ('TOP')
     for x in range(50, 750, 5):
-        clear_canvas()
-        character.draw(x, 550)
-        update_canvas()
-        delay(0.1)
+        draw_character(x)
     pass
+
+
+def draw_character(x):
+    clear_canvas()
+    character.draw(x, 550)
+    update_canvas()
+    delay(0.1)
 
 def draw_right():
     print ('RIGHT')
