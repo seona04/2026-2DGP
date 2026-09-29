@@ -6,7 +6,7 @@ character = load_image('character.png')
 
 def move_circle():
     print ("CIRCLE")
-    for deg in range(0, 360, 5):
+    for deg in range(0, 360, 0.1):
         rad = math.radians(deg)
         x = 400 + 200 * math.cos(rad)
         y = 300 + 200 * math.sin(rad)
