@@ -73,12 +73,15 @@ def draw_triangle_right():
         draw_character(x, y)
     pass
 
-def draw_triangle():
-    print ("TRIANGLE")
-    pass
-
 def draw_triangle_left():
     print ('TRIANGLE_LEFT')
+    for y in range(500, 99, -5):
+        x = 400 - 0.5 * (500 - y)
+        draw_character(x, y)
+    pass
+
+def draw_triangle():
+    print ("TRIANGLE")
     pass
 
 while True:
