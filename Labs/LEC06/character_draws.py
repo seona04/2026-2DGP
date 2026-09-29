@@ -1,30 +1,23 @@
 # 실습 과제 진행
 from pico2d import *
+import math
+
 open_canvas(800, 600)
 
 character = load_image('character.png')
-
-def draw_circle():
-    print ("CIRCLE")
-    for deg in range(0, 360, 5):
-        rad = math.radians(deg)
-        x = 400 + 200 * math.cos(rad)
-        y = 300 + 200 * math.sin(rad)
-       draw_character(x, y)
-    pass
-
-def draw_top():
-    print ('TOP')
-    for x in range(50, 750, 5):
-        draw_character(x)
-    pass
-
 
 def draw_character(x, y):
     clear_canvas()
     character.draw(x, y)
     update_canvas()
     delay(0.1)
+
+def draw_top():
+    print ('TOP')
+    y = 500
+    for x in range(200, 601, 5):
+        draw_character(x, y)
+    pass
 
 def draw_right():
     print ('RIGHT')
@@ -39,6 +32,15 @@ def draw_left():
     pass
 
 
+def draw_circle():
+    print ("CIRCLE")
+    for deg in range(0, 360, 5):
+        rad = math.radians(deg)
+        x = 400 + 200 * math.cos(rad)
+        y = 300 + 200 * math.sin(rad)
+       draw_character(x, y)
+    pass
+
 def draw_rectangle():
     print ("RECTANGLE")
     draw_top()
@@ -52,10 +54,8 @@ def draw_triangle():
     pass
 
 while True:
-    # draw_circle ()
+    draw_circle ()
     draw_rectangle ()
     draw_triangle ()
-    break
-    pass
 
 close_canvas()
