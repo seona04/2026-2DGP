@@ -61,6 +61,9 @@ def draw_rectangle():
 
 def draw_triangle_bottom():
     print ('TRIANGLE_BOTTOM')
+    y = 100
+    for x in range(200, 601, 5):
+        draw_character(x, y)
     pass
 
 def draw_triangle_right():
