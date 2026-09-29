@@ -68,6 +68,9 @@ def draw_triangle_bottom():
 
 def draw_triangle_right():
     print ('TRIANGLE_RIGHT')
+    for y in range(100, 501, 5):
+        x = 600 - 0.5 * (y - 100)
+        draw_character(x, y)
     pass
 
 def draw_triangle():
