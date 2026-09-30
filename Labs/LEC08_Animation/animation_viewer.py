@@ -82,4 +82,6 @@ def draw_frame(frame, x, y):
     delay(FRAME_DELAY)
 
     def play_animation_once(frames, x, y):
+        for frame in frames:
+        draw_frame(frame, x, y)
     pass
