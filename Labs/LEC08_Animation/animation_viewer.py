@@ -68,3 +68,15 @@ def draw_frame(frame, x, y):
 def get_scale(width, height):
     longer_side = max(width, height)
     return TARGET_SIZE / longer_side
+
+def draw_frame(frame, x, y):
+    left, bottom, width, height = frame
+    scale = get_scale(width, height)
+    draw_w, draw_h = width * scale, height * scale
+    clear_canvas()
+    character_sheet.clip_composite_draw(
+        left, bottom, width, height,
+        0, '', x, y, draw_w, draw_h
+    )
+    update_canvas()
+    delay(FRAME_DELAY)
