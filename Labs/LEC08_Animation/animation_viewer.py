@@ -97,3 +97,6 @@ def play_animation_repeat(name, x, y):
 def play_all_animations_once():
     for name in ANIMATION_ORDER:
         play_animation_repeat(name, CENTER_X, CENTER_Y)
+
+def main():
+    pass
