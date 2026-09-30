@@ -99,4 +99,6 @@ def play_all_animations_once():
         play_animation_repeat(name, CENTER_X, CENTER_Y)
 
 def main():
+    while True:
+        play_all_animations_once()
     pass
