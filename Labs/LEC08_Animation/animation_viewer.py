@@ -64,3 +64,7 @@ ANIMATION_ORDER = ['ATTACK', 'DEATH', 'HURT', 'IDLE', 'WALK']
 
 def draw_frame(frame, x, y):
     pass
+
+def get_scale(width, height):
+    longer_side = max(width, height)
+    return TARGET_SIZE / longer_side
