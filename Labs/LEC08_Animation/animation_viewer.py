@@ -51,3 +51,11 @@ WALK_FRAMES = [
     (1259, 109, 88, 158),
     (1483, 111, 88, 156),
 ]
+
+animations = {
+    'ATTACK': ATTACK_FRAMES,
+    'DEATH': DEATH_FRAMES,
+    'HURT': HURT_FRAMES,
+    'IDLE': IDLE_FRAMES,
+    'WALK': WALK_FRAMES,
+}
