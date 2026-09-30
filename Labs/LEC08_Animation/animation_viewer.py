@@ -87,4 +87,8 @@ def draw_frame(frame, x, y):
     pass
 
 def play_animation_repeat(name, x, y):
+    frames = animations[name]
+    print(name)
+    for _ in range(REPEAT_COUNT):
+        play_animation_once(frames, x, y)
     pass
