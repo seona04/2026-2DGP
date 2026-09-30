@@ -59,3 +59,5 @@ animations = {
     'IDLE': IDLE_FRAMES,
     'WALK': WALK_FRAMES,
 }
+
+ANIMATION_ORDER = ['ATTACK', 'DEATH', 'HURT', 'IDLE', 'WALK']
