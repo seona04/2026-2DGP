@@ -80,3 +80,6 @@ def draw_frame(frame, x, y):
     )
     update_canvas()
     delay(FRAME_DELAY)
+
+    def play_animation_once(frames, x, y):
+    pass
