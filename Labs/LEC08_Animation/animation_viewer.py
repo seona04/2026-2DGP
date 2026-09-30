@@ -94,3 +94,6 @@ def play_animation_repeat(name, x, y):
     delay(PAUSE_SEC)  # 마지막 프레임을 유지한 채 1초 정지
     pass
 
+def play_all_animations_once():
+    for name in ANIMATION_ORDER:
+        play_animation_repeat(name, CENTER_X, CENTER_Y)
