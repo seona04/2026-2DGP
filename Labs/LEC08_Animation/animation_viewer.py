@@ -91,4 +91,6 @@ def play_animation_repeat(name, x, y):
     print(name)
     for _ in range(REPEAT_COUNT):
         play_animation_once(frames, x, y)
+    delay(PAUSE_SEC)  # 마지막 프레임을 유지한 채 1초 정지
     pass
+
