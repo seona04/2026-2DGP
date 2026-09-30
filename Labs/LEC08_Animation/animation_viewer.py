@@ -102,3 +102,6 @@ def main():
     while True:
         play_all_animations_once()
     pass
+
+main()
+close_canvas()
