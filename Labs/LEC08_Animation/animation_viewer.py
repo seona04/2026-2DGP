@@ -61,3 +61,6 @@ animations = {
 }
 
 ANIMATION_ORDER = ['ATTACK', 'DEATH', 'HURT', 'IDLE', 'WALK']
+
+def draw_frame(frame, x, y):
+    pass
