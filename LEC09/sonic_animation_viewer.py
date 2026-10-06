@@ -2,6 +2,14 @@ import pico2d
 
 WINDOW_WIDTH = 1200
 WINDOW_HEIGHT = 800
+SPRITE_PATH = "sonic-sprite.png"
+
+sprite_sheet = None
+
+
+def load_resources():
+    global sprite_sheet
+    sprite_sheet = pico2d.load_image(SPRITE_PATH)
 
 
 def handle_events():
@@ -20,11 +28,14 @@ def update():
 
 def draw():
     pico2d.clear_canvas()
+    if sprite_sheet is not None:
+        sprite_sheet.draw(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2)
     pico2d.update_canvas()
 
 
 def main():
     pico2d.open_canvas(WINDOW_WIDTH, WINDOW_HEIGHT)
+    load_resources()
 
     while True:
         if not handle_events():
