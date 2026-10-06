@@ -85,7 +85,17 @@ def handle_events():
 
 
 def update():
-    pass
+    global frame_elapsed, last_update_time
+    current_time = pico2d.get_time()
+    if last_update_time is None:
+        last_update_time = current_time
+        return
+
+    frame_elapsed += current_time - last_update_time
+    last_update_time = current_time
+    while frame_elapsed >= FRAME_INTERVAL:
+        advance_frame()
+        frame_elapsed -= FRAME_INTERVAL
 
 
 def draw():
