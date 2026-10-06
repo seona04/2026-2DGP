@@ -46,7 +46,6 @@ ACTION_FRAMES = {
 ACTION_ORDER = tuple(ACTION_FRAMES)
 current_action_index = 0
 current_frame_index = 0
-FIRST_FRAME_CLIP = ACTION_FRAMES["walk"][0]
 
 sprite_sheet = None
 
@@ -80,7 +79,7 @@ def draw():
     pico2d.clear_canvas()
     if sprite_sheet is not None:
         sprite_sheet.clip_draw(
-            *FIRST_FRAME_CLIP,
+            *get_current_frame_clip(),
             WINDOW_WIDTH // 2,
             WINDOW_HEIGHT // 2,
         )
