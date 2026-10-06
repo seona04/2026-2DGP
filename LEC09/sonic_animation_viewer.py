@@ -57,6 +57,11 @@ def load_resources():
     print(f"Sprite sheet size: {sprite_sheet.w} x {sprite_sheet.h}")
 
 
+def get_current_frame_clip():
+    action_name = ACTION_ORDER[current_action_index]
+    return ACTION_FRAMES[action_name][current_frame_index]
+
+
 def handle_events():
     events = pico2d.get_events()
     for event in events:
