@@ -3,6 +3,7 @@ import pico2d
 WINDOW_WIDTH = 1200
 WINDOW_HEIGHT = 800
 OUTPUT_SCALE = 4
+FRAME_TIME_EPSILON = 1e-9
 ACTION_FRAME_INTERVALS = {
     "walk": 0.12,
     "run": 0.08,
@@ -154,12 +155,12 @@ def update():
     while True:
         action_name = ACTION_ORDER[current_action_index]
         frame_interval = ACTION_FRAME_INTERVALS[action_name]
-        if frame_elapsed < frame_interval:
+        if frame_elapsed + FRAME_TIME_EPSILON < frame_interval:
             break
         cycle_completed = advance_frame()
         if cycle_completed and action_repeat_count >= ACTION_REPEAT_LIMIT:
             advance_action()
-        frame_elapsed -= frame_interval
+        frame_elapsed = max(0.0, frame_elapsed - frame_interval)
     if status_elapsed >= STATUS_LOG_INTERVAL:
         print(get_playback_status())
         status_elapsed %= STATUS_LOG_INTERVAL
