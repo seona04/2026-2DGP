@@ -2,6 +2,7 @@ import pico2d
 
 WINDOW_WIDTH = 1200
 WINDOW_HEIGHT = 800
+FRAME_INTERVAL = 0.1
 SPRITE_PATH = "sonic-sprite.png"
 ACTION_FRAMES = {
     "walk": [
@@ -46,6 +47,8 @@ ACTION_FRAMES = {
 ACTION_ORDER = tuple(ACTION_FRAMES)
 current_action_index = 0
 current_frame_index = 0
+frame_elapsed = 0.0
+last_update_time = None
 
 sprite_sheet = None
 
