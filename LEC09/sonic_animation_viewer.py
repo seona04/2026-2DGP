@@ -3,6 +3,7 @@ import pico2d
 WINDOW_WIDTH = 1200
 WINDOW_HEIGHT = 800
 SPRITE_PATH = "sonic-sprite.png"
+FIRST_FRAME_CLIP = (0, 445, 30, 40)
 
 sprite_sheet = None
 
@@ -30,7 +31,11 @@ def update():
 def draw():
     pico2d.clear_canvas()
     if sprite_sheet is not None:
-        sprite_sheet.draw(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2)
+        sprite_sheet.clip_draw(
+            *FIRST_FRAME_CLIP,
+            WINDOW_WIDTH // 2,
+            WINDOW_HEIGHT // 2,
+        )
     pico2d.update_canvas()
 
 
