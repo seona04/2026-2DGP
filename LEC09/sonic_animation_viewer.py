@@ -43,6 +43,9 @@ ACTION_FRAMES = {
         (268, 325, 30, 33),
     ],
 }
+ACTION_ORDER = tuple(ACTION_FRAMES)
+current_action_index = 0
+current_frame_index = 0
 FIRST_FRAME_CLIP = ACTION_FRAMES["walk"][0]
 
 sprite_sheet = None
