@@ -3,7 +3,11 @@ import pico2d
 WINDOW_WIDTH = 1200
 WINDOW_HEIGHT = 800
 OUTPUT_SCALE = 4
-FRAME_INTERVAL = 0.1
+ACTION_FRAME_INTERVALS = {
+    "walk": 0.12,
+    "run": 0.08,
+    "spin": 0.1,
+}
 SPRITE_PATH = "sonic-sprite.png"
 ACTION_REPEAT_LIMIT = 5
 MOVING_ACTIONS = ("walk", "run")
@@ -134,11 +138,15 @@ def update():
         if character_x - frame_width / 2 > WINDOW_WIDTH:
             character_x = -frame_width / 2
 
-    while frame_elapsed >= FRAME_INTERVAL:
+    while True:
+        action_name = ACTION_ORDER[current_action_index]
+        frame_interval = ACTION_FRAME_INTERVALS[action_name]
+        if frame_elapsed < frame_interval:
+            break
         cycle_completed = advance_frame()
         if cycle_completed and action_repeat_count >= ACTION_REPEAT_LIMIT:
             advance_action()
-        frame_elapsed -= FRAME_INTERVAL
+        frame_elapsed -= frame_interval
 
 
 def draw():
