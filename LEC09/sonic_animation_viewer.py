@@ -10,6 +10,7 @@ sprite_sheet = None
 def load_resources():
     global sprite_sheet
     sprite_sheet = pico2d.load_image(SPRITE_PATH)
+    print(f"Sprite sheet size: {sprite_sheet.w} x {sprite_sheet.h}")
 
 
 def handle_events():
