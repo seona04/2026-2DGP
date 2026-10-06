@@ -64,6 +64,16 @@ def get_current_frame_clip():
     return ACTION_FRAMES[action_name][current_frame_index]
 
 
+def advance_frame():
+    global current_frame_index
+    action_name = ACTION_ORDER[current_action_index]
+    current_frame_index += 1
+    if current_frame_index == len(ACTION_FRAMES[action_name]):
+        current_frame_index = 0
+        return True
+    return False
+
+
 def handle_events():
     events = pico2d.get_events()
     for event in events:
