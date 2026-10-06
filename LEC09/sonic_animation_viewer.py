@@ -6,6 +6,8 @@ OUTPUT_SCALE = 4
 FRAME_INTERVAL = 0.1
 SPRITE_PATH = "sonic-sprite.png"
 ACTION_REPEAT_LIMIT = 5
+MOVING_ACTIONS = ("walk", "run")
+MOVEMENT_SPEED = 120.0
 ACTION_FRAMES = {
     "walk": [
         (0, 447, 30, 39),
@@ -52,6 +54,7 @@ current_frame_index = 0
 action_repeat_count = 0
 frame_elapsed = 0.0
 last_update_time = None
+character_x = WINDOW_WIDTH / 2
 
 sprite_sheet = None
 
@@ -96,14 +99,22 @@ def handle_events():
 
 
 def update():
-    global frame_elapsed, last_update_time
+    global character_x, frame_elapsed, last_update_time
     current_time = pico2d.get_time()
     if last_update_time is None:
         last_update_time = current_time
         return
 
-    frame_elapsed += current_time - last_update_time
+    delta_time = current_time - last_update_time
+    frame_elapsed += delta_time
     last_update_time = current_time
+    action_name = ACTION_ORDER[current_action_index]
+    if action_name in MOVING_ACTIONS:
+        character_x += MOVEMENT_SPEED * delta_time
+        frame_width = get_current_frame_clip()[2] * OUTPUT_SCALE
+        if character_x - frame_width / 2 > WINDOW_WIDTH:
+            character_x = -frame_width / 2
+
     while frame_elapsed >= FRAME_INTERVAL:
         cycle_completed = advance_frame()
         if cycle_completed and action_repeat_count >= ACTION_REPEAT_LIMIT:
@@ -117,7 +128,7 @@ def draw():
         frame_clip = get_current_frame_clip()
         sprite_sheet.clip_draw(
             *frame_clip,
-            WINDOW_WIDTH // 2,
+            int(character_x),
             WINDOW_HEIGHT // 2,
             frame_clip[2] * OUTPUT_SCALE,
             frame_clip[3] * OUTPUT_SCALE,
