@@ -85,9 +85,13 @@ def validate_action_frames():
 
 def load_resources():
     global sprite_sheet
-    sprite_sheet = pico2d.load_image(SPRITE_PATH)
+    try:
+        sprite_sheet = pico2d.load_image(SPRITE_PATH)
+    except OSError as error:
+        print(f"Could not load {SPRITE_PATH}: {error}")
+        return False
     validate_action_frames()
-    print(f"Sprite sheet size: {sprite_sheet.w} x {sprite_sheet.h}")
+    return True
 
 
 def get_current_frame_clip():
@@ -177,7 +181,9 @@ def draw():
 
 def main():
     pico2d.open_canvas(WINDOW_WIDTH, WINDOW_HEIGHT)
-    load_resources()
+    if not load_resources():
+        pico2d.close_canvas()
+        return
 
     while True:
         if not handle_events():
