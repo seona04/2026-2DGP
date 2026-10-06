@@ -4,6 +4,7 @@ WINDOW_WIDTH = 1200
 WINDOW_HEIGHT = 800
 FRAME_INTERVAL = 0.1
 SPRITE_PATH = "sonic-sprite.png"
+ACTION_REPEAT_LIMIT = 5
 ACTION_FRAMES = {
     "walk": [
         (0, 447, 30, 39),
@@ -76,6 +77,13 @@ def advance_frame():
     return False
 
 
+def advance_action():
+    global action_repeat_count, current_action_index, current_frame_index
+    current_action_index = (current_action_index + 1) % len(ACTION_ORDER)
+    current_frame_index = 0
+    action_repeat_count = 0
+
+
 def handle_events():
     events = pico2d.get_events()
     for event in events:
@@ -96,7 +104,9 @@ def update():
     frame_elapsed += current_time - last_update_time
     last_update_time = current_time
     while frame_elapsed >= FRAME_INTERVAL:
-        advance_frame()
+        cycle_completed = advance_frame()
+        if cycle_completed and action_repeat_count >= ACTION_REPEAT_LIMIT:
+            advance_action()
         frame_elapsed -= FRAME_INTERVAL
 
 
