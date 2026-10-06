@@ -47,6 +47,7 @@ ACTION_FRAMES = {
 ACTION_ORDER = tuple(ACTION_FRAMES)
 current_action_index = 0
 current_frame_index = 0
+action_repeat_count = 0
 frame_elapsed = 0.0
 last_update_time = None
 
@@ -65,11 +66,12 @@ def get_current_frame_clip():
 
 
 def advance_frame():
-    global current_frame_index
+    global action_repeat_count, current_frame_index
     action_name = ACTION_ORDER[current_action_index]
     current_frame_index += 1
     if current_frame_index == len(ACTION_FRAMES[action_name]):
         current_frame_index = 0
+        action_repeat_count += 1
         return True
     return False
 
