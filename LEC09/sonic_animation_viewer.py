@@ -8,6 +8,7 @@ ACTION_FRAME_INTERVALS = {
     "run": 0.08,
     "spin": 0.1,
 }
+STATUS_LOG_INTERVAL = 1.0
 SPRITE_PATH = "sonic-sprite.png"
 ACTION_REPEAT_LIMIT = 5
 MOVING_ACTIONS = ("walk", "run")
@@ -58,6 +59,7 @@ current_frame_index = 0
 action_repeat_count = 0
 frame_elapsed = 0.0
 last_update_time = None
+status_elapsed = 0.0
 character_x = WINDOW_WIDTH / 2
 
 sprite_sheet = None
@@ -93,6 +95,12 @@ def get_current_frame_clip():
     return ACTION_FRAMES[action_name][current_frame_index]
 
 
+def get_playback_status():
+    action_name = ACTION_ORDER[current_action_index]
+    frame_count = len(ACTION_FRAMES[action_name])
+    return f"{action_name}: frame {current_frame_index + 1}/{frame_count}"
+
+
 def advance_frame():
     global action_repeat_count, current_frame_index
     action_name = ACTION_ORDER[current_action_index]
@@ -122,7 +130,7 @@ def handle_events():
 
 
 def update():
-    global character_x, frame_elapsed, last_update_time
+    global character_x, frame_elapsed, last_update_time, status_elapsed
     current_time = pico2d.get_time()
     if last_update_time is None:
         last_update_time = current_time
@@ -130,6 +138,7 @@ def update():
 
     delta_time = current_time - last_update_time
     frame_elapsed += delta_time
+    status_elapsed += delta_time
     last_update_time = current_time
     action_name = ACTION_ORDER[current_action_index]
     if action_name in MOVING_ACTIONS:
@@ -147,6 +156,9 @@ def update():
         if cycle_completed and action_repeat_count >= ACTION_REPEAT_LIMIT:
             advance_action()
         frame_elapsed -= frame_interval
+    if status_elapsed >= STATUS_LOG_INTERVAL:
+        print(get_playback_status())
+        status_elapsed %= STATUS_LOG_INTERVAL
 
 
 def draw():
