@@ -2,6 +2,7 @@ import pico2d
 
 WINDOW_WIDTH = 1200
 WINDOW_HEIGHT = 800
+OUTPUT_SCALE = 4
 FRAME_INTERVAL = 0.1
 SPRITE_PATH = "sonic-sprite.png"
 ACTION_REPEAT_LIMIT = 5
@@ -113,10 +114,13 @@ def update():
 def draw():
     pico2d.clear_canvas()
     if sprite_sheet is not None:
+        frame_clip = get_current_frame_clip()
         sprite_sheet.clip_draw(
-            *get_current_frame_clip(),
+            *frame_clip,
             WINDOW_WIDTH // 2,
             WINDOW_HEIGHT // 2,
+            frame_clip[2] * OUTPUT_SCALE,
+            frame_clip[3] * OUTPUT_SCALE,
         )
     pico2d.update_canvas()
 
