@@ -59,9 +59,28 @@ character_x = WINDOW_WIDTH / 2
 sprite_sheet = None
 
 
+def validate_action_frames():
+    for action_name, frames in ACTION_FRAMES.items():
+        if not frames:
+            raise ValueError(f"Action '{action_name}' has no frames")
+        for frame_index, (left, bottom, width, height) in enumerate(frames):
+            if (
+                left < 0
+                or bottom < 0
+                or width <= 0
+                or height <= 0
+                or left + width > sprite_sheet.w
+                or bottom + height > sprite_sheet.h
+            ):
+                raise ValueError(
+                    f"Invalid frame {frame_index + 1} in action '{action_name}'"
+                )
+
+
 def load_resources():
     global sprite_sheet
     sprite_sheet = pico2d.load_image(SPRITE_PATH)
+    validate_action_frames()
     print(f"Sprite sheet size: {sprite_sheet.w} x {sprite_sheet.h}")
 
 
