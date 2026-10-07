@@ -29,7 +29,7 @@ running = True
 frame = 0
 x, y = TUK_WIDTH // 2, TUK_HEIGHT // 2
 
-# fill here
+hide_cursor()
 
 
 
@@ -44,7 +44,6 @@ while running:
     delay(0.05)
 
 close_canvas()
-
 
 
 
